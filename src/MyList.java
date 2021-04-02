@@ -19,7 +19,7 @@ public class MyList<T extends Comparable<? super T>> {
     }
 
     public T smallElem() {
-        return myList.stream().sorted().findFirst().orElseThrow(() -> new NoSuchElementException("List empty"));
+        return myList.stream().min(Comparator.naturalOrder()).orElseThrow(() -> new NoSuchElementException("List empty"));
     }
 
     public T highElem() {
