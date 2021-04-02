@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class MyList<T> {
+public class MyList<T extends Comparable<? super T>> {
     public final List<T> myList;
 
     public MyList() {
@@ -23,7 +23,7 @@ public class MyList<T> {
     }
 
     public T highElem() {
-        return myList.stream().min(Collections.reverseOrder()).orElseThrow(() -> new NoSuchElementException("List empty"));
+        return myList.stream().max(Comparator.naturalOrder()).orElseThrow(() -> new NoSuchElementException("List empty"));
     }
 
     @Override
